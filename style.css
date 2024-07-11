@@ -1,0 +1,356 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5a623;
+    --background-color: #f0f4f8;
+    --text-color: #333;
+    --panel-background: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    transition: opacity 0.3s ease-in-out;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#migraineCanvas {
+    position: absolute;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#migraineCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: url(pencil32.png) 0 32, auto;
+}
+
+canvas {
+    cursor: url(pencil32.png) 0 32, auto;
+}
+
+.flash-tooltip {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.panel {
+    background-color: var(--panel-background);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+#controlPanel {
+    position: fixed;
+    top: 70px;
+    left: -280px;
+    width: 260px;
+    z-index: 100;
+}
+
+#controlPanel.visible {
+    left: 1rem;
+}
+
+#sessionsPanel {
+    position: fixed;
+    bottom: -300px;
+    left: 1rem;
+    right: 1rem;
+    height: 280px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+#sessionsPanel.expanded {
+    bottom: 1rem;
+}
+
+#menuToggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.menu-icon {
+    display: block;
+    width: 48px;
+    height: 4px;
+    background-color: var(--primary-color);
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 4px;
+    background-color: var(--primary-color);
+    transition: all 0.3s;
+}
+
+.menu-icon::before {
+    top: -12px;
+}
+
+.menu-icon::after {
+    bottom: -12px;
+}
+
+/* .menu-open .menu-icon,
+.menu-open .menu-icon::before,
+.menu-open .menu-icon::after {
+    background-color: white;
+}*/
+
+.menu-open .menu-icon {
+    background-color: transparent;
+}
+
+.menu-open .menu-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-open .menu-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3a80d2;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slider-container {
+    margin: 1rem 0;
+}
+
+#speedSlider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 5px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+#speedSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+#speedSlider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th,
+td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: 700;
+}
+
+.session-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.session-actions button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+#stopRecordingButton {
+    position: fixed;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 8px 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+#stopRecordingButton.visible {
+    top: 0;
+}
+
+#sessionInfo {
+    position: fixed;
+    bottom: 1rem;
+    width: auto;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    #controlPanel,
+    #sessionsPanel {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+    }
+
+    table {
+        font-size: 0.875rem;
+    }
+
+    th,
+    td {
+        padding: 0.5rem;
+    }
+}
+
+.fullscreen-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+}
+
+.fullscreen-prompt p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.hidden {
+    display: none;
+}

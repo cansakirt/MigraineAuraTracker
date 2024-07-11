@@ -50,3 +50,11 @@ Contributions to the Migraine Aura Tracker project are welcome. Please feel free
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+Special thanks to all contributors and users who help improve this tool for the migraine community.
+
+---
+
+Created by [Can Sakirt](https://github.com/cansakirt)

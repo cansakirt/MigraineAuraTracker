@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Migraine Aura Tracker</title>
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        
+        <div id="fullscreenPrompt" class="fullscreen-prompt hidden">
+            <p>Please enter fullscreen mode to use the app.</p>
+            <button id="enterFullscreenButton" class="btn btn-primary">Enter Fullscreen</button>
+        </div>
+
+        <header id="titleBar">
+            <button id="menuToggle" aria-label="Toggle menu">
+                <span class="menu-icon"></span>
+            </button>
+            <h1 class="hidden">Migraine Aura Tracker</h1>
+        </header>
+
+        <nav id="controlPanel" class="panel">
+            <button id="resetButton" class="btn btn-secondary">Reset Canvas</button>
+            <button id="recordButton" class="btn btn-primary">Start Recording</button>
+            <button id="playButton" class="btn btn-secondary" disabled>Replay Animation</button>
+            <div class="slider-container">
+                <label for="speedSlider">Playback Speed: <span id="speedValue">10x</span></label>
+                <input type="range" id="speedSlider" min="1" max="20" value="10" />
+            </div>
+            <button id="exportButton" class="btn btn-secondary" disabled>Export Session</button>
+            <button id="importButton" class="btn btn-secondary">Import Session</button>
+            <input type="file" id="fileInput" accept=".json" hidden />
+        </nav>
+
+        <main>
+            <canvas id="migraineCanvas" aria-label="Migraine aura drawing area"></canvas>
+            <div id="stopRecordingButton" class="">Stop Recording</div>
+            <footer id="sessionInfo">
+                <p id="currentSessionInfo">No active session</p>
+            </footer>
+        </main>
+
+        <aside id="sessionsPanel" class="panel">
+            <h2>Session History</h2>
+            <table id="sessionsTable">
+                <thead>
+                    <tr>
+                        <th>Session #</th>
+                        <th>Start Time</th>
+                        <th>Duration</th>
+                        <th>Auras</th>
+                        <th>Avg. Size</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </aside>
+
+        <script src="main.js"></script>
+    </body>
+</html>
