@@ -2,6 +2,13 @@
 
 Migraine Aura Tracker is a web-based application designed to help individuals track and visualize the progression of their migraine auras over time. This tool allows users to record the shape and size of their auras during migraine episodes, providing valuable insights into their condition.
 
+---
+<img src="https://github.com/cansakirt/MigraineAuraTracker/assets/3201154/a142d2cb-2bfe-4d94-8114-f2af76775c47" alt="Hubert Airy's drawing shows his migraine aura progression over 20 minutes. The Royal Society" width="300"/>
+
+*Hubert Airy's drawing shows his migraine aura progression over 20 minutes. The Royal Society*
+
+---
+
 ## Features
 
 - Real-time aura tracing on an interactive canvas
@@ -50,10 +57,6 @@ Contributions to the Migraine Aura Tracker project are welcome. Please feel free
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-Special thanks to all contributors and users who help improve this tool for the migraine community.
 
 ---
 
